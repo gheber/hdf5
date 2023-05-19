@@ -6,6 +6,9 @@ Values from 32768 to 65535 are reserved for non-distributed uses (e.g., internal
 
 Please contact the maintainer of a filter for help with the plugin.
 
+| WARNING: be aware that compression filters require that the library not use `H5_MEMORY_ALLOC_SANITY_CHECK`.  Building in debug mode automatically enables this feature in earlier releases, which causes memory allocation and free problems in filter applications. Future versions of HDF5 will not enable this feature. |
+| :--- |
+
 | Filter | ID  | Description | URL | Contact |
 | ---    | --- | ---         | --- | ---     |
 | LZO  | 305 | **LZO lossless compression used by PyTables** <ul><li>LZO is a portable lossless data compression library written in ANSI C.</li><li>Reliable and thoroughly tested. High adoption - each second terrabytes of data are compressed by LZO. No bugs since the first release back in 1996.</li><li>Offers pretty fast compression and *extremely* fast decompression.</li><li>Includes slower compression levels achieving a quite competitive compression ratio while still decompressing at this very high speed.</li><li>Distributed under the terms of the GNU General Public License (GPL v2+). Commercial licenses are available on request.</li><li>Military-grade stability and robustness.</li></ul> | [LZO](http://www.oberhumer.com/opensource/lzo/), [PyTables](http://www.pytables.org/) | [Francesc Alted](mailto:faltet@pytables.org) |
