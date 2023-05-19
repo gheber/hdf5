@@ -2,6 +2,8 @@
 
 Valid VFD identifiers can have values from 0 through 255 for VFDs defined by the HDF5 library. Values 256 through 511 are available for testing new VFDs. Subsequent values should be obtained by contacting the [The HDF Help Desk](mailto:help@hdfgroup.org).
 
+Please contact the maintainer of a VFD for help with the plugin.
+
 | Driver | ID  | Search Name | Description | URL | Contact |
 | ---    | --- | ---         | ---         | --- | ---     |
 | CUDA GPU  | 512 | `gds`  | The HDF5 GPUDirect Storage VFD is a Virtual File Driver (VFD) for HDF5 that can be used to interface with Nvidia's GPUDirect Storage (GDS) API. The driver is built as a plugin library that is external to HDF5.| [Link](https://github.com/hpc-io/vfd-gds)	| Suren Byna (sbyna at lbl dot gov) |
