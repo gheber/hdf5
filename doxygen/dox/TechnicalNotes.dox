@@ -2,12 +2,16 @@
 
 \li \ref api-compat-macros
 \li \ref APPDBG
+\li <a href="https://docs.hdfgroup.org/hdf5/tn/HDF5_Dynamically_Loaded_Filters.pdf">HDF5 Dynamically Loaded Filters</a>
 \li \ref FMTDISC
 \li \ref FILTER
 \li \ref IOFLOW
-\li \ref TNMDC
 \li \ref MT
 \li \ref VFL
+\li <a href="https://docs.hdfgroup.org/hdf5/tn/Design-HDF5-SWMR-20130629.pdf">HDF5 Single‐Writer/Multiple‐Reader Feature Design and Semantics</a>
+\li <a href="https://docs.hdfgroup.org/hdf5/tn/HDF5_SWMR_User_Guide.pdf">HDF5 Single-writer/Multiple-reader User's Guide</a>
+\li \ref TNMDC
+\li <a href="https://docs.hdfgroup.org/hdf5/tn/Programmatic_Control_of_Dynamic_Plugins.pdf">Programmatic Control of Dynamic Plugins</a>
 
  */
 
