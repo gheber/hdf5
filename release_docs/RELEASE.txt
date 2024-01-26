@@ -278,6 +278,16 @@ New Features
 
     Library:
     --------
+    - Implemented optimized support for vector I/O in the Subfiling VFD
+
+      Previously, the Subfiling VFD would handle vector I/O requests by
+      breaking them down into individual I/O requests, one for each entry
+      in the I/O vectors provided. This could result in poor I/O performance
+      for features in HDF5 that utilize vector I/O, such as parallel I/O
+      to filtered datasets. The Subfiling VFD now properly handles vector
+      I/O requests in their entirety, resulting in fewer I/O calls, improved
+      vector I/O performance and improved vector I/O memory efficiency.
+    
     - Added a simple cache to the read-only S3 (ros3) VFD
 
       The read-only S3 VFD now caches the first N bytes of a file stored
@@ -379,6 +389,22 @@ New Features
     ----------------
 
     - Added Fortran APIs:
+      H5FGET_INTENT_F, H5SSEL_ITER_CREATE_F, H5SSEL_ITER_GET_SEQ_LIST_F,
+      H5SSEL_ITER_CLOSE_F, H5S_mp_H5SSEL_ITER_RESET_F
+
+    - Added Fortran Parameters:
+      H5S_SEL_ITER_GET_SEQ_LIST_SORTED_F, H5S_SEL_ITER_SHARE_WITH_DATASPACE_F
+
+    - Added Fortran Parameters:
+      H5S_BLOCK_F and H5S_PLIST_F
+
+    - The configuration definitions file, H5config_f.inc, is now installed
+      and the HDF5 version number has been added to it.
+
+    - Added Fortran APIs:
+      h5fdelete_f
+
+    - Added Fortran APIs:
       h5vlnative_addr_to_token_f and h5vlnative_token_to_address_f
 
     - Fixed an uninitialized error return value for hdferr
@@ -450,6 +476,34 @@ Bug Fixes since HDF5-1.14.0 release
 ===================================
     Library
     -------
+    - Memory usage growth issue
+
+      Starting with the HDF5 1.12.1 release, an issue (GitHub issue #1256)
+      was observed where running a simple program that has a loop of opening
+      a file, reading from an object with a variable-length datatype and
+      then closing the file would result in the process fairly quickly
+      running out of memory. Upon further investigation, it was determined
+      that this memory was being kept around in the library's datatype
+      conversion pathway cache that is used to speed up datatype conversions
+      which are repeatedly used within an HDF5 application's lifecycle. For
+      conversions involving variable-length or reference datatypes, each of
+      these cached pathway entries keeps a reference to its associated file
+      for later use. Since the file was being closed and reopened on each
+      loop iteration, and since the library compares for equality between
+      instances of opened files (rather than equality of the actual files)
+      when determining if it can reuse a cached conversion pathway, it was
+      determining that no cached conversion pathways could be reused and was
+      creating a new cache entry on each loop iteration during I/O. This
+      would lead to constant growth of that cache and the memory it consumed,
+      as well as constant growth of the memory consumed by each cached entry
+      for the reference to its associated file.
+
+      To fix this issue, the library now removes any cached datatype
+      conversion path entries for variable-length or reference datatypes
+      associated with a particular file when that file is closed.
+
+      Fixes GitHub #1256
+
     - Suppressed floating-point exceptions in H5T init code
 
       The floating-point datatype initialization code in H5Tinit_float.c

@@ -220,7 +220,7 @@ set (HDF5_CPP_TST_DIR          ${HDF5_SOURCE_DIR}/c++/test)
 set (HDF5_HL_SRC_DIR           ${HDF5_SOURCE_DIR}/hl)
 set (HDF5_HL_CPP_SRC_DIR       ${HDF5_SOURCE_DIR}/hl/c++)
 set (HDF5_HL_TOOLS_DIR         ${HDF5_SOURCE_DIR}/hl/tools)
-set (HDF5_TOOLS_ROOT_DIR            ${HDF5_SOURCE_DIR}/tools)
+set (HDF5_TOOLS_ROOT_DIR       ${HDF5_SOURCE_DIR}/tools)
 set (HDF5_TOOLS_SRC_DIR        ${HDF5_SOURCE_DIR}/tools/src)
 set (HDF5_TOOLS_TST_DIR        ${HDF5_SOURCE_DIR}/tools/test)
 set (HDF5_PERFORM_SRC_DIR      ${HDF5_SOURCE_DIR}/tools/src/perform)
@@ -462,7 +462,8 @@ set (CMAKE_INCLUDE_CURRENT_DIR_IN_INTERFACE ON)
 # Include directories in the source or build tree should come before other
 # directories to prioritize headers in the sources over installed ones.
 #-----------------------------------------------------------------------------
-set(CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE ON)
+set (CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE ON)
+set (HDF5_COMP_INCLUDE_DIRECTORIES)
 
 #-----------------------------------------------------------------------------
 # Mac OS X Options
