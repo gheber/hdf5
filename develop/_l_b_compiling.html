@@ -37,7 +37,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="HDFG-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">HDF5<span id="projectnumber">&#160;1.15.0.4cbdf1a</span>
+   <div id="projectname">HDF5<span id="projectnumber">&#160;1.15.0.69dda03</span>
    </div>
    <div id="projectbrief">API Reference</div>
   </td>
@@ -521,7 +521,8 @@ Troubleshooting CMake</h2>
 </div><!-- fragment --><p>Previously, the find_package invocation was: </p><div class="fragment"><div class="line">FIND_PACKAGE(HDF5 COMPONENTS C HL NO_MODULE REQUIRED)</div>
 </div><!-- fragment --><h4>My platform/compiler is not included. Can I still use the configuration files?</h4>
 <p>Yes, you can but you will have to edit the HDF5_Examples.cmake file and update the variable: </p><div class="fragment"><div class="line">CTEST_CMAKE_GENERATOR  </div>
-</div><!-- fragment --><p>The generators for your platform can be seen by typing: </p><div class="fragment"><div class="line">cmake --help</div>
+</div><!-- fragment --><p>The generators for your platform can be seen by typing: </p><div class="fragment"><div class="line">cmake --<a class="code hl_function" href="h5import_8h.html#a254c266e4e95df99708a4e96db2c0e9e">help</a></div>
+<div class="ttc" id="ah5import_8h_html_a254c266e4e95df99708a4e96db2c0e9e"><div class="ttname"><a href="h5import_8h.html#a254c266e4e95df99708a4e96db2c0e9e">help</a></div><div class="ttdeci">void help(char *)</div></div>
 </div><!-- fragment --><h4>What do I do if the build fails?</h4>
 <p>I received an error during the build and the application binary is not in the build directory as I expected. How do I determine what the problem is?</p>
 <p>If the error is not clear, then the first thing you may want to do is replace the -V (Dash Uppercase Vee) option for ctest in the build script to -VV (Dash Uppercase Vee Uppercase Vee). Then remove the build directory and re-run the build script. The output should be more verbose.</p>

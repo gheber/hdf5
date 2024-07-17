@@ -37,7 +37,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="HDFG-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">HDF5<span id="projectnumber">&#160;1.15.0.4cbdf1a</span>
+   <div id="projectname">HDF5<span id="projectnumber">&#160;1.15.0.69dda03</span>
    </div>
    <div id="projectbrief">API Reference</div>
   </td>
@@ -548,7 +548,7 @@ Properties</h3>
 <div class="ttc" id="agroup___p_d_t_s_t_d_html_ga10e46ab72ac0330c51ed6cf709db4697"><div class="ttname"><a href="group___p_d_t_s_t_d.html#ga10e46ab72ac0330c51ed6cf709db4697">H5T_STD_U16BE</a></div><div class="ttdeci">#define H5T_STD_U16BE</div><div class="ttdef"><b>Definition</b> H5Tpublic.h:348</div></div>
 </div><!-- fragment --><p>We can see that the chunk size for this dataset is 768 x 3200, and the storage size is 4915200.</p>
 <p>What if the chunk size were smaller?</p>
-<p>The dataset was modified to have a chunk size of 1 x 10, using the <code style="background-color:whitesmoke;">h5repack</code> utility, as shown below. </p><div class="fragment"><div class="line">$ h5repack -l /All_Data/VIIRS-M1-SDR_All/Radiance:CHUNK=1x10 </div>
+<p>The dataset was modified to have a chunk size of 1 x 10, using the <code style="background-color:whitesmoke;">h5repack</code> utility, as shown below. </p><div class="fragment"><div class="line">$ <a class="code hl_function" href="h5repack_8h.html#a314b5651a0aa5175d64605dbc83e094e">h5repack</a> -l /All_Data/VIIRS-M1-SDR_All/Radiance:<a class="code hl_define" href="h5import_8h.html#a25022864dfc8ec428e7128282e57b136">CHUNK</a>=1x10 </div>
 <div class="line">   SVM01_npp_d20130524_t1255132_e1256374_b08146_c20130524192048864992_noaa_ops.h5 SVM01repack.h5</div>
 <div class="line"> </div>
 <div class="line">$ h5dump -p -H -A 0 -d <span class="stringliteral">&quot;/All_Data/VIIRS-M1-SDR_All/Radiance&quot;</span> SVM01repack.h5</div>
@@ -572,6 +572,8 @@ Properties</h3>
 <div class="line">   }</div>
 <div class="line">}</div>
 <div class="line">}</div>
+<div class="ttc" id="ah5import_8h_html_a25022864dfc8ec428e7128282e57b136"><div class="ttname"><a href="h5import_8h.html#a25022864dfc8ec428e7128282e57b136">CHUNK</a></div><div class="ttdeci">#define CHUNK</div><div class="ttdef"><b>Definition</b> h5import.h:341</div></div>
+<div class="ttc" id="ah5repack_8h_html_a314b5651a0aa5175d64605dbc83e094e"><div class="ttname"><a href="h5repack_8h.html#a314b5651a0aa5175d64605dbc83e094e">h5repack</a></div><div class="ttdeci">int h5repack(const char *infile, const char *outfile, pack_opt_t *options)</div></div>
 </div><!-- fragment --><p>In this case, the storage size of the dataset is the same, but the size of the file almost doubled!: </p><div class="fragment"><div class="line">$ ls -1sh</div>
 <div class="line">total 35M</div>
 <div class="line">12M SVM01_npp_d20130524_t1255132_e1256374_b08146_c20130524192048864992_noaa_ops.h5</div>
@@ -601,7 +603,7 @@ HDFView</h2>
 </div>
    </td></tr>
 </table>
-<p>You can also set a user option to automatically show the value(s) in a Region Reference. Under the <code style="background-color:whitesmoke;">Tools</code> pull-down menu, select <code style="background-color:whitesmoke;">User Options</code> and then select <code style="background-color:whitesmoke;">HDF Settings</code> and then select <code style="background-color:whitesmoke;">Show RegRef Values</code> in the <code style="background-color:whitesmoke;">Data</code> section (see the middle of the image below): </p><table class="doxtable">
+<p>You can also set a user option to automatically show the value(s) in a Region Reference. Under the <code style="background-color:whitesmoke;">Tools</code> pull-down menu, select <code style="background-color:whitesmoke;">User <a class="el" href="struct_options.html">Options</a></code> and then select <code style="background-color:whitesmoke;">HDF Settings</code> and then select <code style="background-color:whitesmoke;">Show RegRef Values</code> in the <code style="background-color:whitesmoke;">Data</code> section (see the middle of the image below): </p><table class="doxtable">
 <tr>
 <td><div class="image">
 <img src="hdfview-regrefval.png" alt=""/>

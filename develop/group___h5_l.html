@@ -37,7 +37,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="HDFG-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">HDF5<span id="projectnumber">&#160;1.15.0.4cbdf1a</span>
+   <div id="projectname">HDF5<span id="projectnumber">&#160;1.15.0.69dda03</span>
    </div>
    <div id="projectbrief">API Reference</div>
   </td>
@@ -380,7 +380,7 @@ Functions</h2></td></tr>
 <p>When the external link <code>link_name</code> is accessed, the library will search for the target file <code>file_name</code> as described below:</p>
 <ul>
 <li>If <code>file_name</code> is a relative pathname, the following steps are performed:<ul>
-<li>The library will get the prefix(es) set in the environment variable <code>HDF5_EXT_PREFIX</code> and will try to prepend each prefix to <code>file_name</code> to form a new <code>file_name</code>.</li>
+<li>The library will get the <a class="el" href="h5dump_8h.html#ad2849cf781a4db22cc1b31eaaee50a4f">prefix(es)</a> set in the environment variable <code>HDF5_EXT_PREFIX</code> and will try to prepend each prefix to <code>file_name</code> to form a new <code>file_name</code>.</li>
 <li>If the new <code>file_name</code> does not exist or if <code>HDF5_EXT_PREFIX</code> is not set, the library will get the prefix set via <a class="el" href="group___l_a_p_l.html#gafa5eced13ba3a00cdd65669626dc7294" title="Sets prefix to be applied to external link paths.">H5Pset_elink_prefix()</a> and prepend it to <code>file_name</code> to form a new <code>file_name</code>.</li>
 <li>If the new <code>file_name</code> does not exist or no prefix is being set by <a class="el" href="group___l_a_p_l.html#gafa5eced13ba3a00cdd65669626dc7294" title="Sets prefix to be applied to external link paths.">H5Pset_elink_prefix()</a>, then the path of the file associated with <code>link_loc_id</code> is obtained. This path can be the absolute path or the current working directory plus the relative path of that file when it is created/opened. The library will prepend this path to <code>file_name</code> to form a new <code>file_name</code>.</li>
 <li>If the new <code>file_name</code> does not exist, then the library will look for <code>file_name</code> and will return failure/success accordingly.</li>

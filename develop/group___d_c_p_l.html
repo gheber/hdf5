@@ -37,7 +37,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="HDFG-logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">HDF5<span id="projectnumber">&#160;1.15.0.4cbdf1a</span>
+   <div id="projectname">HDF5<span id="projectnumber">&#160;1.15.0.69dda03</span>
    </div>
    <div id="projectbrief">API Reference</div>
   </td>
@@ -2038,7 +2038,7 @@ If the printf form is used for the source file or dataset names, the selection i
 <dl class="section user"><dt>Source File Resolutions:</dt><dd>When a source dataset residing in a different file is accessed, the library will search for the source file <code>src_file_name</code> as described below: <ul>
 <li>If <code>src_file_name</code> is a <code>"."</code> (period) then it refers to the file containing the virtual dataset. </li>
 <li>If <code>src_file_name</code> is a relative pathname, the following steps are performed:<ul>
-<li>The library will get the prefix(es) set in the environment variable <code>HDF5_VDS_PREFIX</code> and will try to prepend each prefix to <code>src_file_name</code> to form a new <code>src_file_name</code>. If the new <code>src_file_name</code> does not exist or if <code>HDF5_VDS_PREFIX</code> is not set, the library will get the prefix set via <a class="el" href="group___d_a_p_l.html#ga6816e0de35a335f636922c3cd5569819" title="Sets prefix to be applied to VDS source file paths.">H5Pset_virtual_prefix()</a> and prepend it to <code>src_file_name</code> to form a new <code>src_file_name</code>. If the new <code>src_file_name</code> does not exist or no prefix is being set by <a class="el" href="group___d_a_p_l.html#ga6816e0de35a335f636922c3cd5569819" title="Sets prefix to be applied to VDS source file paths.">H5Pset_virtual_prefix()</a> then the path of the file containing the virtual dataset is obtained. This path can be the absolute path or the current working directory plus the relative path of that file when it is created/opened. The library will prepend this path to <code>src_file_name</code> to form a new <code>src_file_name</code>.</li>
+<li>The library will get the <a class="el" href="h5dump_8h.html#ad2849cf781a4db22cc1b31eaaee50a4f">prefix(es)</a> set in the environment variable <code>HDF5_VDS_PREFIX</code> and will try to prepend each prefix to <code>src_file_name</code> to form a new <code>src_file_name</code>. If the new <code>src_file_name</code> does not exist or if <code>HDF5_VDS_PREFIX</code> is not set, the library will get the prefix set via <a class="el" href="group___d_a_p_l.html#ga6816e0de35a335f636922c3cd5569819" title="Sets prefix to be applied to VDS source file paths.">H5Pset_virtual_prefix()</a> and prepend it to <code>src_file_name</code> to form a new <code>src_file_name</code>. If the new <code>src_file_name</code> does not exist or no prefix is being set by <a class="el" href="group___d_a_p_l.html#ga6816e0de35a335f636922c3cd5569819" title="Sets prefix to be applied to VDS source file paths.">H5Pset_virtual_prefix()</a> then the path of the file containing the virtual dataset is obtained. This path can be the absolute path or the current working directory plus the relative path of that file when it is created/opened. The library will prepend this path to <code>src_file_name</code> to form a new <code>src_file_name</code>.</li>
 <li>If the new <code>src_file_name</code> does not exist, then the library will look for <code>src_file_name</code> and will return failure/success accordingly. </li>
 </ul>
 </li>
