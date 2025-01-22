@@ -1,10 +1,16 @@
 # How to Contribute to HDF5
 
-We welcome contributions to the HDF5 project and appreciate efforts ranging from minor typo corrections to new features. This guide outlines the process and principles for contributing to HDF5. If you have questions or need guidance, feel free to reach out.
+We welcome contributions to the HDF5 project and appreciate efforts ranging from minor typo corrections to new features. This guide outlines the process and principles for contributing to HDF5. If you have questions or need guidance, **get in touch!** Here are a few good channels to reach us:
+
+1. Create a [GitHub issue](https://github.com/HDFGroup/hdf5/issues).
+2. Create a new topic on the [HDF forum](https://forum.hdfgroup.org/c/hdf5/8).
+3. Attend a (Tuesdays at 12:20 Central US&Canada) [HDF clinic](https://us06web.zoom.us/s/98286880081).
+4. Attend an HDF5 Working Group meeting.
+5. Email the [HelpDesk](mailto:help@hdfgroup.org).
 
 ## Contribution Requirements
 
-Before contributing, you must agree to the HDF Group software license terms found in the LICENSE file in each branch's top-level directory.
+Before contributing, you must agree to the HDF Group software license terms found in the [LICENSE](https://github.com/HDFGroup/hdf5/blob/develop/LICENSE) file in each branch's top-level directory.
 
 > **Prerequisite**: Familiarity with `git` and `GitHub`. If you are new, review the [GitHub tutorial](https://guides.github.com/activities/hello-world/), which takes about 10 minutes.
 
