@@ -90,3 +90,7 @@ option (HDF5_BUILD_EXAMPLES "Build HDF5 Library Examples" ON)
 
 option (BUILD_TESTING "Build HDF5 Unit Testing" ON)
 
+# Enable SBOM generation features
+
+option(ENABLE_SBOM_GENERATION "Enable SBOM generation during build" ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

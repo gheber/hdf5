@@ -40,6 +40,15 @@ set (H5_DEP_EXECUTABLES
 )
 
 # --------------------------------------------------------------------
+# Optional SBOM generation for h5[jam,unjam]
+# --------------------------------------------------------------------
+if (ENABLE_SBOM_GENERATION)
+  include (${CMAKE_SOURCE_DIR}/config/cmake/SBOM/GenerateSBOM.cmake)
+  generate_sbom_data (h5jam)
+  generate_sbom_data (h5unjam)
+endif ()
+
+# --------------------------------------------------------------------
 # Add Target to clang-format
 # --------------------------------------------------------------------
 if (HDF5_ENABLE_FORMATTERS)

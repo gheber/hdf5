@@ -25,6 +25,14 @@ set_global_variable (HDF5_UTILS_TO_EXPORT "${HDF5_UTILS_TO_EXPORT};h5format_conv
 
 set (H5_DEP_EXECUTABLES h5format_convert)
 
+# --------------------------------------------------------------------
+# Optional SBOM generation for h5format_convert
+# --------------------------------------------------------------------
+if (ENABLE_SBOM_GENERATION)
+  include (${CMAKE_SOURCE_DIR}/config/cmake/SBOM/GenerateSBOM.cmake)
+  generate_sbom_data (h5format_convert)
+endif ()
+
 #-----------------------------------------------------------------------------
 # Add Target to clang-format
 #-----------------------------------------------------------------------------

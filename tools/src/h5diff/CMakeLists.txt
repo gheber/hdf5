@@ -30,6 +30,14 @@ set_global_variable (HDF5_UTILS_TO_EXPORT "${HDF5_UTILS_TO_EXPORT};h5diff")
 
 set (H5_DEP_EXECUTABLES h5diff)
 
+# --------------------------------------------------------------------
+# Optional SBOM generation for h5diff
+# --------------------------------------------------------------------
+if (ENABLE_SBOM_GENERATION)
+  include (${CMAKE_SOURCE_DIR}/config/cmake/SBOM/GenerateSBOM.cmake)
+  generate_sbom_data (h5diff)
+endif ()
+
 #-----------------------------------------------------------------------------
 # Add Target to clang-format
 #-----------------------------------------------------------------------------

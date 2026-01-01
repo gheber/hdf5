@@ -37,6 +37,14 @@ set_global_variable (HDF5_UTILS_TO_EXPORT "${HDF5_UTILS_TO_EXPORT};h5repack")
 set (H5_DEP_EXECUTABLES h5repack)
 
 # --------------------------------------------------------------------
+# Optional SBOM generation for h5repack
+# --------------------------------------------------------------------
+if (ENABLE_SBOM_GENERATION)
+  include (${CMAKE_SOURCE_DIR}/config/cmake/SBOM/GenerateSBOM.cmake)
+  generate_sbom_data (h5repack)
+endif ()
+
+# --------------------------------------------------------------------
 # Add Target to clang-format
 # --------------------------------------------------------------------
 if (HDF5_ENABLE_FORMATTERS)

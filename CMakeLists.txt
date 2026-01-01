@@ -181,6 +181,7 @@ mark_as_advanced (HDF5_EXTERNAL_LIB_SUFFIX)
 #   add_subdirectory (Utilities/hdf5-1.8)
 #-----------------------------------------------------------------------------
 string (TIMESTAMP CONFIG_DATE "%Y-%m-%d")
+string (TIMESTAMP UTC_TIME UTC)
 
 #-----------------------------------------------------------------------------
 # Allow Visual Studio solution directories
@@ -1310,5 +1311,16 @@ if (EXISTS "${HDF5_SOURCE_DIR}/HDF5Examples" AND IS_DIRECTORY "${HDF5_SOURCE_DIR
     add_subdirectory (HDF5Examples)
   endif ()
 endif ()
+
+#-----------------------------------------------------------------------------
+# Option to build SBOM
+#-----------------------------------------------------------------------------
+
+# Custom target for SBOM generation
+add_custom_target(generate-sbom
+    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_SOURCE_DIR}/config/cmake/SBOM/GenerateSBOM.cmake
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    COMMENT "Generating SBOM for ${PROJECT_NAME}"
+)
 
 include (CMakeInstallation.cmake)

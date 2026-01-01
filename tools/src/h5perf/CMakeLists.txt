@@ -27,6 +27,14 @@ set_global_variable (HDF5_UTILS_TO_EXPORT "${HDF5_UTILS_TO_EXPORT};h5perf_serial
 
 set (H5_DEP_EXECUTABLES h5perf_serial)
 
+# --------------------------------------------------------------------
+# Optional SBOM generation for h5perf_serial
+# --------------------------------------------------------------------
+if (ENABLE_SBOM_GENERATION)
+  include (${CMAKE_SOURCE_DIR}/config/cmake/SBOM/GenerateSBOM.cmake)
+  generate_sbom_data (h5perf_serial)
+endif ()
+
 if (HDF5_ENABLE_FORMATTERS)
   clang_format (HDF5_TOOLS_SRC_H5PERF_h5perf_serial_FORMAT h5perf_serial)
 endif ()
@@ -52,6 +60,14 @@ if (H5_HAVE_PARALLEL)
   set_global_variable (HDF5_UTILS_TO_EXPORT "${HDF5_UTILS_TO_EXPORT};h5perf")
 
   set (H5_DEP_EXECUTABLES ${H5_DEP_EXECUTABLES} h5perf)
+
+  # --------------------------------------------------------------------
+  # Optional SBOM generation for h5perf
+  # --------------------------------------------------------------------
+  if (ENABLE_SBOM_GENERATION)
+    include (${CMAKE_SOURCE_DIR}/config/cmake/SBOM/GenerateSBOM.cmake)
+    generate_sbom_data (h5perf)
+  endif ()
 
   if (HDF5_ENABLE_FORMATTERS)
     clang_format (HDF5_TOOLS_SRC_H5PERF_h5perf_FORMAT h5perf)

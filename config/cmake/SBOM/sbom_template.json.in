@@ -1,0 +1,17 @@
+{
+  "project": {
+    "name": "@CMAKE_PROJECT_NAME@",
+    "version": "@HDF5_PACKAGE_VERSION@",
+    "description": "@HDF5_PACKAGE_URL@"
+  },
+  "build_info": {
+    "cmake_version": "@CMAKE_VERSION@",
+    "compiler": "@CMAKE_C_COMPILER_ID@",
+    "compiler_version": "@CMAKE_C_COMPILER_VERSION@",
+    "build_type": "@CMAKE_BUILD_TYPE@",
+    "system": "@CMAKE_SYSTEM@",
+    "processor": "@CMAKE_SYSTEM_PROCESSOR@"
+  },
+  "timestamp": "@UTC_TIME@",
+  "dependencies": []
+}

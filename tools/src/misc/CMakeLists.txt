@@ -85,6 +85,18 @@ set (H5_DEP_EXECUTABLES
 )
 
 # --------------------------------------------------------------------
+# Optional SBOM generation for misc.
+# --------------------------------------------------------------------
+if (ENABLE_SBOM_GENERATION)
+  include (${CMAKE_SOURCE_DIR}/config/cmake/SBOM/GenerateSBOM.cmake)
+  generate_sbom_data (h5debug)
+  generate_sbom_data (h5repart)
+  generate_sbom_data (h5mkgrp)
+  generate_sbom_data (h5clear)
+  generate_sbom_data (h5delete)
+endif ()
+
+# --------------------------------------------------------------------
 # Add Target to clang-format
 # --------------------------------------------------------------------
 if (HDF5_ENABLE_FORMATTERS)

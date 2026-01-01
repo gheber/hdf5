@@ -1299,6 +1299,19 @@ if (BUILD_SHARED_LIBS)
   set (install_targets ${install_targets} ${HDF5_LIBSH_TARGET})
 endif ()
 
+# --------------------------------------------------------------------
+# Optional SBOM generation for static or shared libs
+# --------------------------------------------------------------------
+if (ENABLE_SBOM_GENERATION)
+  include (${CMAKE_SOURCE_DIR}/config/cmake/SBOM/GenerateSBOM.cmake)
+  if (BUILD_STATIC_LIBS)
+    generate_sbom_data (${HDF5_LIB_TARGET})
+  endif ()
+  if (BUILD_SHARED_LIBS)
+    generate_sbom_data (${HDF5_LIBSH_TARGET})
+  endif ()
+endif ()
+
 #-----------------------------------------------------------------------------
 # Add Target to clang-format
 #-----------------------------------------------------------------------------
