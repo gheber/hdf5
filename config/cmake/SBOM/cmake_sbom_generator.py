@@ -32,7 +32,7 @@ class CMakeSBOMGenerator:
                 "created": datetime.utcnow().isoformat() + "Z"
             },
             "name": metadata["project"]["name"],
-            "documentNamespace": f"https://cmake.org/{metadata['project']['name']}-{self._generate_uuid()}",
+            "documentNamespace": f"https://www.hdfgroup.org/{metadata['project']['name']}-{self._generate_uuid()}",
             "packages": [],
             "relationships": []
         }
@@ -86,12 +86,16 @@ class CMakeSBOMGenerator:
         # Common patterns
         if "boost" in path.name.lower():
             return "boost"
-        elif "openssl" in path.name.lower():
-            return "openssl"
-        elif "curl" in path.name.lower():
-            return "libcurl"
-        elif "protobuf" in path.name.lower():
-            return "protobuf"
+        elif "h5fdsubfiling" in path.name.lower():
+            return "H5FDsubfiling"
+        elif "hl" in path.name.lower():
+            return "hdf5_hl"
+        elif "szip" in path.name.lower():
+            return "szip"
+        elif "tools" in path.name.lower():
+            return "hdf5_tools"
+        elif "zlib" in path.name.lower():
+            return "zlib"
         return None
     def _parse_cmake_cache(self):
         """Parse CMakeCache.txt for dependency information"""
@@ -109,9 +113,9 @@ class CMakeSBOMGenerator:
         dependencies = set()
         for key, value in cache_data.items():
             # Look for package-related cache entries
-            if "_DIR" in key and "FOUND" not in key:
+            if "_DIR" in key and "DIRENT" not in key and "DIRECT" not in key and "FOUND" not in key:
                 package_name = key.replace("_DIR", "").lower()
-                if package_name not in ["cmake", "cpack", "ctest"]:
+                if not package_name.startswith(("cmake", "cpack", "ctest", "fetchcontent")):
                     dependencies.add(package_name)
             elif "_FOUND" in key and value == "TRUE":
                 package_name = key.replace("_FOUND", "").lower()
