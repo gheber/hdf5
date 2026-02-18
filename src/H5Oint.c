@@ -23,7 +23,7 @@
 /* Module Setup */
 /****************/
 
-#define H5G_FRIEND /* Suppress error about including H5Gpkg */
+#define H5G_FRIEND     /* Suppress error about including H5Gpkg */
 #include "H5Omodule.h" /* This source code file is part of the H5O module */
 
 /***********/
@@ -56,17 +56,17 @@
 
 /* User data for recursive traversal over objects from a group */
 typedef struct {
-    hid_t           obj_id;         /* The ID for the starting group */
-    H5G_loc_t      *curr_loc;       /* Location of current group */
-    H5_index_t      idx_type;       /* Index to use */
-    H5_iter_order_t order;          /* Iteration order within index */
-    H5SL_t         *visited;        /* Skip list for tracking visited nodes */
-    char           *path;           /* Path name of the object */
-    size_t          curr_path_len;  /* Current length of the path in the buffer */
-    size_t          path_buf_size;  /* Size of path buffer */
-    H5O_iterate2_t  op;             /* Application callback */
-    void           *op_data;        /* Application's op data */
-    unsigned        fields;         /* Selection of object info */
+    hid_t           obj_id;        /* The ID for the starting group */
+    H5G_loc_t      *curr_loc;      /* Location of current group */
+    H5_index_t      idx_type;      /* Index to use */
+    H5_iter_order_t order;         /* Iteration order within index */
+    H5SL_t         *visited;       /* Skip list for tracking visited nodes */
+    char           *path;          /* Path name of the object */
+    size_t          curr_path_len; /* Current length of the path in the buffer */
+    size_t          path_buf_size; /* Size of path buffer */
+    H5O_iterate2_t  op;            /* Application callback */
+    void           *op_data;       /* Application's op data */
+    unsigned        fields;        /* Selection of object info */
 } H5O_iter_visit_ud_t;
 
 /********************/
@@ -2549,10 +2549,10 @@ H5O__visit_link_cb(const H5O_link_t *lnk, void *_udata)
     H5G_name_t           obj_path;                              /* Object's group hier. path */
     H5O_loc_t            obj_oloc;                              /* Object's object location */
     bool                 obj_found = false;                     /* Object at 'name' found */
-    size_t               old_path_len = udata->curr_path_len;   /* Length of path before appending this link's name */
-    size_t               link_name_len;                         /* Length of link's name */
-    size_t               len_needed;                            /* Length of path string needed */
-    herr_t               ret_value = H5_ITER_CONT;              /* Return value */
+    size_t old_path_len = udata->curr_path_len; /* Length of path before appending this link's name */
+    size_t link_name_len;                       /* Length of link's name */
+    size_t len_needed;                          /* Length of path string needed */
+    herr_t ret_value = H5_ITER_CONT;            /* Return value */
 
     FUNC_ENTER_PACKAGE
 
@@ -2658,7 +2658,8 @@ H5O__visit_link_cb(const H5O_link_t *lnk, void *_udata)
 
                     /* Attempt to get the link info for this group */
                     if ((linfo_exists = H5G__obj_get_linfo(&obj_oloc, &linfo)) < 0)
-                        HGOTO_ERROR(H5E_OHDR, H5E_CANTGET, H5_ITER_ERROR, "can't check for link info message");
+                        HGOTO_ERROR(H5E_OHDR, H5E_CANTGET, H5_ITER_ERROR,
+                                    "can't check for link info message");
                     if (linfo_exists) {
                         /* Check for creation order tracking, if creation order index lookup requested */
                         if (idx_type == H5_INDEX_CRT_ORDER) {
@@ -2681,9 +2682,8 @@ H5O__visit_link_cb(const H5O_link_t *lnk, void *_udata)
                     udata->curr_loc = &obj_loc;
 
                     /* Iterate over links in group */
-                    ret_value =
-                        H5G__obj_iterate(&obj_oloc, idx_type, udata->order, (hsize_t)0, NULL, H5O__visit_link_cb,
-                                         udata);
+                    ret_value = H5G__obj_iterate(&obj_oloc, idx_type, udata->order, (hsize_t)0, NULL,
+                                                 H5O__visit_link_cb, udata);
 
                     /* Restore location */
                     udata->curr_loc = old_loc;
@@ -2801,23 +2801,23 @@ H5O__visit(H5G_loc_t *loc, const char *obj_name, H5_index_t idx_type, H5_iter_or
 
     /* Check for object being a group */
     if (oinfop->type == H5O_TYPE_GROUP) {
-        H5G_loc_t  start_loc;             /* Location of starting group */
-        H5_index_t iter_idx_type = idx_type; /* Type of index to use for first group */
-        H5O_linfo_t linfo;                /* Link info message */
-        htri_t      linfo_exists;         /* Whether the link info message exists */
+        H5G_loc_t   start_loc;                /* Location of starting group */
+        H5_index_t  iter_idx_type = idx_type; /* Type of index to use for first group */
+        H5O_linfo_t linfo;                    /* Link info message */
+        htri_t      linfo_exists;             /* Whether the link info message exists */
 
         /* Get the location of the starting group */
         if (H5G_loc(obj_id, &start_loc) < 0)
             HGOTO_ERROR(H5E_ARGS, H5E_BADTYPE, FAIL, "not a location");
 
         /* Set up user data for visiting links */
-        udata.obj_id    = obj_id;
-        udata.curr_loc  = &start_loc;
-        udata.idx_type  = idx_type;
-        udata.order     = order;
-        udata.op        = op;
-        udata.op_data   = op_data;
-        udata.fields    = fields;
+        udata.obj_id   = obj_id;
+        udata.curr_loc = &start_loc;
+        udata.idx_type = idx_type;
+        udata.order    = order;
+        udata.op       = op;
+        udata.op_data  = op_data;
+        udata.fields   = fields;
 
         /* Allocate space for the path name */
         if (NULL == (udata.path = H5MM_strdup("")))
