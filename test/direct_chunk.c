@@ -2442,10 +2442,7 @@ error:
 static int
 test_direct_chunk_read_sub_chunk(hid_t fid)
 {
-    enum {
-        SUB_CHUNK_OFFSET = 17,
-        SUB_CHUNK_SIZE   = 53
-    };
+    enum { SUB_CHUNK_OFFSET = 17, SUB_CHUNK_SIZE = 53 };
 
     hid_t         sid           = H5I_INVALID_HID;  /* Dataspace ID */
     hid_t         did           = H5I_INVALID_HID;  /* Dataset ID */
@@ -2588,8 +2585,8 @@ test_direct_chunk_read_sub_chunk(hid_t fid)
         TEST_ERROR;
     if (H5Pset_deflate(filtered_dcpl, 6) < 0)
         TEST_ERROR;
-    if ((filtered_did =
-             H5Dcreate2(fid, DATASETNAME16, H5T_NATIVE_INT, sid, H5P_DEFAULT, filtered_dcpl, H5P_DEFAULT)) < 0)
+    if ((filtered_did = H5Dcreate2(fid, DATASETNAME16, H5T_NATIVE_INT, sid, H5P_DEFAULT, filtered_dcpl,
+                                   H5P_DEFAULT)) < 0)
         TEST_ERROR;
     if (H5Dwrite(filtered_did, H5T_NATIVE_INT, H5S_ALL, H5S_ALL, H5P_DEFAULT, wdata) < 0)
         TEST_ERROR;
